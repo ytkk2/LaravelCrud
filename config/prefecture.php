@@ -1,5 +1,5 @@
 <?php 
-/*return array(
+return array(
   '0' => '未選択',
   '1' => '北海道', 
   '2' => '青森県', 
