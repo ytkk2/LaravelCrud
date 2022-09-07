@@ -16,11 +16,11 @@ $(function(){
 
     /* Success */
         request.done(function(data){
-            //alert("通信に成功しました");
             var prefecture = data[0]["prefecture"];
             var city = data[0]["city"];
             var local = data[0]["local"]
         /* Output */
+            //$("#prefecture").append('<option value="'+prefecture.display_name+'">'+prefecture.display_name+'</option>');
             $("#prefecture").val(prefecture);
             $("#city").val(city);
             $("#local").val(local);

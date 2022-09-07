@@ -74,7 +74,12 @@
                             <strong class="field-title">Prefecture</strong>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content">
-                        {{ Form::select('prefecture_id', App\Models\Base\Prefecture::selectlist(), old('prefecture_id'), ['class' => 'form-control', 'id' => 'prefecture', 'required' => 'required']) }} 
+                            <select type="text" class="form-control" name="prefecture_id" id="prefecture" required>
+                                <option  disabled style='display:none;' @if (empty($company->prefecture_id)) selected @endif>未選択</option>
+                                @foreach($prefectures as $pref)
+                                    <option value="{{ $pref->display_name }}" @if (isset($company->prefecture_id) && ($company->prefecture_id === $pref->id)) selected @endif>{{ $pref->display_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
@@ -160,18 +165,6 @@
                             {{ Form::number('license_number', $company->license_number, array('placeholder' => '', 'class' => 'form-control', 'data-prompt-position' => 'bottomLeft:0,11')) }}
                         </div>
                     </div>
-
-                    <div id="form-image" class="form-group">
-                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-header">
-                            <span class="label label-danger label-required">Required</span>
-                            <strong class="field-title">Image</strong>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content" onchange="previewFile()">
-                            {{ Form::file('image',  array('placeholder' => '','class' => 'form-control validate[required]', 'data-prompt-position' => 'bottomLeft:0,11' )) }}
-
-                        </div>
-                    </div>
-                    <img id="preview" src="{{ asset('img/no-image/no-image.jpg') }}" style="height:250px;">
 
                     <div id="form-button" class="form-group no-border">
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 20px;">

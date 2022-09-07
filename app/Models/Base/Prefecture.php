@@ -8,6 +8,7 @@
 namespace App\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
+use App\Models\Company;
 
 /**
  * Class Prefecture
@@ -44,13 +45,10 @@ class Prefecture extends Eloquent
 {
     $prefs = Prefecture::all();
     $list = array();
-    $list += array( "" => "選択してください" ); //selectlistの先頭を空に
+    $list += array( "" => "未選択" ); //selectlistの先頭を空に
     foreach ($prefs as $pref) {
        $list += array( $pref->display_name => $pref->display_name );
     }
     return $list;
 }
-
-
-
 }
