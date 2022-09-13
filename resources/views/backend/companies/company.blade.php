@@ -74,7 +74,7 @@
                             <strong class="field-title">Prefecture</strong>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content">
-                        {{ Form::select('prefecture_id', App\Models\Base\Prefecture::selectlist(), old('prefecture_id'), ['class' => 'form-control', 'id' => 'prefecture', 'required' => 'required']) }} 
+                        {{ Form::select('prefecture_id', App\Models\Base\Prefecture::selectlist(), old('prefecture_id'), ['class' => 'form-control validate[required]', 'id' => 'prefecture', 'data-prompt-position' => 'bottomLeft:0,11']) }} 
                         </div>
                     </div>
 
@@ -167,7 +167,7 @@
                             <strong class="field-title">Image</strong>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content" onchange="previewFile()">
-                            {{ Form::file('image',  array('placeholder' => '','class' => 'form-control validate[required]', 'data-prompt-position' => 'bottomLeft:0,11' )) }}
+                            {{ Form::file('image',  array('placeholder' => '','class' => 'validate[required]', 'data-prompt-position' => 'bottomLeft:0,11' )) }}
 
                         </div>
                     </div>

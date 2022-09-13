@@ -74,7 +74,7 @@
                             <strong class="field-title">Prefecture</strong>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content">
-                            <select type="text" class="form-control" name="prefecture_id" id="prefecture" required>
+                            <select type="text" class="form-control validate[required]" name="prefecture_id" id="prefecture" required>
                                 <option  disabled style='display:none;' @if (empty($company->prefecture_id)) selected @endif>未選択</option>
                                 @foreach($prefectures as $pref)
                                     <option value="{{ $pref->display_name }}" @if (isset($company->prefecture_id) && ($company->prefecture_id === $pref->id)) selected @endif>{{ $pref->display_name }}</option>
@@ -166,6 +166,19 @@
                         </div>
                     </div>
 
+                    <div id="form-image" class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-header">
+                            <strong class="field-title">Image</strong>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 col-content" onchange="previewFile()">
+                            <label>
+                                <input type="file" id="image" name="image" class="js-upload-file">Choose Files
+                              </label>
+                              <div class="js-upload-filename">{{ $company->image }}</div>
+                        </div>
+                    </div>
+                    <img id="preview" src="{{ asset('storage/upload/files/' . $company->image) }}" style="height:250px;">
+
                     <div id="form-button" class="form-group no-border">
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 20px;">
                             <button type="submit" name="submit" id="send" class="btn btn-primary">Submit</button>
@@ -190,6 +203,7 @@
 @section('body-class', 'custom-select')
 
 @section('css-scripts')
+<link rel="stylesheet" href="{{ asset('css/backend/imageFile.css') }}"  type="text/css">
 @endsection
 
 @section('js-scripts')
@@ -199,5 +213,6 @@
 <script src="{{ asset('js/3rdparty/validation-engine/jquery.validationEngine.js') }}"></script>
 <script src="{{ asset('js/backend/companies/address.js') }}"></script>
 <script src="{{ asset('js/backend/companies/form.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @endsection
 

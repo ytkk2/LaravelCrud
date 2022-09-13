@@ -27,3 +27,9 @@ function previewFile(){
       reader.readAsDataURL(file);
     }
   }
+  $(function() {
+    $('.js-upload-file').on('change', function () { 
+      var file = $(this).prop('files')[0]; 
+      $('.js-upload-filename').text(file.name);
+    });
+  });

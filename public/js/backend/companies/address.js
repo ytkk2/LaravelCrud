@@ -20,7 +20,6 @@ $(function(){
             var city = data[0]["city"];
             var local = data[0]["local"]
         /* Output */
-            //$("#prefecture").append('<option value="'+prefecture.display_name+'">'+prefecture.display_name+'</option>');
             $("#prefecture").val(prefecture);
             $("#city").val(city);
             $("#local").val(local);

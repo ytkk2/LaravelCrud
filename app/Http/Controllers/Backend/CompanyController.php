@@ -143,7 +143,15 @@ class CompanyController extends Controller
             'fax' => 'nullable|string|max:20',
             'url' => 'nullable|url',
             'license_number' => 'nullable|numeric',
+            'image' => 'file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        // store and name for posted image 
+        if (is_file($request->image)){
+        $img_id = Company::find($request->get('id'));
+        $path = $request->file('image')->storeAs('public/upload/files','Image_' .$img_id['id'].'.png');
+        $request->image = basename($path);
+        }
 
         // Foreign key about prefecture_id
         $prefecture = $request->input('prefecture_id');
